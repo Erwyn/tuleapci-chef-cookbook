@@ -13,7 +13,7 @@ end
 file "/home/jenkins/.ssh/authorized_keys" do
     owner "jenkins"
     group "jenkins"
-    content node['users']['jenkins']['authorized_keys']
+    content node['users']['jenkins']['authorized_keys'].join("\n")
     mode 00600
     action :create
 end

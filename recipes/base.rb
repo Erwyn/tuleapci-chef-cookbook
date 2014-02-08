@@ -1,4 +1,4 @@
-include_recipe 'jenkins'
+include_recipe 'tuleapci::jenkins'
 
 # Configure Tuleap repo
 yum_repository 'tuleap-dev' do
