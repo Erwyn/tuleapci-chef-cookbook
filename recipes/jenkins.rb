@@ -18,6 +18,14 @@ file "/home/jenkins/.ssh/authorized_keys" do
     action :create
 end
 
+file "/home/jenkins/.ssh/known_hosts" do
+    owner "jenkins"
+    group "jenkins"
+    content node['users']['jenkins']['known_hosts'].join("\n")
+    mode 00600
+    action :create
+end
+
 # Add ssh private key
 file "/home/jenkins/.ssh/id_rsa" do
   owner   "jenkins"

@@ -55,39 +55,42 @@ execute "Install composer" do
    not_if     { ::File.exists?("/usr/local/bin/composer.phar")}
 end
 
-cookbook_file "/etc/httpd/conf.d/rest-tests.conf" do
+template "/etc/httpd/conf.d/rest-tests.conf" do
   source "rest-tests.conf"
-  action :create_if_missing
-end
-
-cookbook_file "/etc/httpd/conf.d/php.conf" do
-  source "php.conf"
-  action :create_if_missing
-end
-
-%w[ /home/jenkins/etc /home/jenkins/etc/codendi /home/jenkins/etc/codendi/c\
-onf ].each do |path|
-  directory path do
-    owner "jenkins"
-    group "jenkins"
-    mode 00755
-  end
-end
-
-template "/home/jenkins/etc/codendi/conf/integration_tests.inc" do
-  source "integration_tests.inc.dist"
-  owner "jenkins"
-  group "jenkins"
   action :create
   variables(
-    :source_path => "/home/jenkins/tuleap"
+    :source_path => "/home/jenkins/workspace/rest_job/tuleap",
+    :conf_path  =>  "/home/jenkins/workspace/rest_job/etc"
   )
 end
 
-cookbook_file "/home/jenkins/etc/codendi/conf/dbtest.inc" do
-  source "dbtest.inc.dist"
-  action :create_if_missing
-end
+#cookbook_file "/etc/httpd/conf.d/php.conf" do
+#  source "php.conf"
+#  action :create_if_missing
+#end
+
+# %w[ /home/jenkins/etc /home/jenkins/etc/codendi /home/jenkins/etc/codendi/conf ].each do |path|
+#   directory path do
+#     owner "jenkins"
+#     group "jenkins"
+#     mode 00755
+#   end
+# end
+
+# template "/home/jenkins/etc/codendi/conf/integration_tests.inc" do
+#   source "integration_tests.inc.dist"
+#   owner "jenkins"
+#   group "jenkins"
+#   action :create
+#   variables(
+#     :source_path => "/home/jenkins/tuleap"
+#   )
+# end
+
+# cookbook_file "/home/jenkins/etc/codendi/conf/dbtest.inc" do
+#   source "dbtest.inc.dist"
+#   action :create_if_missing
+# end
 
 service "httpd" do
   action [ :start, :enable ]
