@@ -45,6 +45,7 @@ end
 package 'httpd'
 package 'php-restler'
 
+# Needed so apache can access sources in workspace
 directory "/home/jenkins" do
   mode 00755
   action :create
@@ -63,34 +64,6 @@ template "/etc/httpd/conf.d/rest-tests.conf" do
     :conf_path  =>  "/home/jenkins/workspace/rest_job/etc"
   )
 end
-
-#cookbook_file "/etc/httpd/conf.d/php.conf" do
-#  source "php.conf"
-#  action :create_if_missing
-#end
-
-# %w[ /home/jenkins/etc /home/jenkins/etc/codendi /home/jenkins/etc/codendi/conf ].each do |path|
-#   directory path do
-#     owner "jenkins"
-#     group "jenkins"
-#     mode 00755
-#   end
-# end
-
-# template "/home/jenkins/etc/codendi/conf/integration_tests.inc" do
-#   source "integration_tests.inc.dist"
-#   owner "jenkins"
-#   group "jenkins"
-#   action :create
-#   variables(
-#     :source_path => "/home/jenkins/tuleap"
-#   )
-# end
-
-# cookbook_file "/home/jenkins/etc/codendi/conf/dbtest.inc" do
-#   source "dbtest.inc.dist"
-#   action :create_if_missing
-# end
 
 service "httpd" do
   action [ :start, :enable ]
