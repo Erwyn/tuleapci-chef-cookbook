@@ -5,6 +5,7 @@ description      "Setup Tuleap continuous build server"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
 
+depends 'sudo'
 depends 'yum'
 depends 'yum-epel'
 depends 'yum-repoforge'
