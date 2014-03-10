@@ -22,6 +22,7 @@ package 'cvs'
 package 'jpgraph-tuleap'
 package 'php-gd'
 package 'php-process'
+package 'unzip'
 
 # Phpuint                                                                   
 package 'php-xml'
