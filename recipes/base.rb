@@ -22,7 +22,10 @@ package 'cvs'
 package 'jpgraph-tuleap'
 package 'php-gd'
 package 'php-process'
+
+# Simpletest suite
 package 'unzip'
+package 'subversion'
 
 # Phpuint                                                                   
 package 'php-xml'
