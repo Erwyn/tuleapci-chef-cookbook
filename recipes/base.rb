@@ -9,6 +9,8 @@ yum_repository 'tuleap-dev' do
 end
 
 # Install dependencies
+package 'centos-release-SCL'
+package 'php-pecl-apc'
 package 'git'
 package 'php-soap'
 package 'php'
@@ -38,7 +40,6 @@ execute "Setup DB" do
 end
 
 # JS tests
-#package 'centos-release-SCL'
 #package 'nodejs010-npm'
 
 #execute "Install NPM packages" do
