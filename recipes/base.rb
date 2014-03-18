@@ -24,6 +24,7 @@ package 'cvs'
 package 'jpgraph-tuleap'
 package 'php-gd'
 package 'php-process'
+package 'php-guzzle'
 
 # Simpletest suite
 package 'unzip'
