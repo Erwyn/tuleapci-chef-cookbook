@@ -17,6 +17,8 @@ $sys_custom_themeroot = $codendi_cache_dir;
 $sys_custom_dir       = $codendi_cache_dir;
 $sys_custom_incdir    = $codendi_cache_dir;
 
+$sys_max_size_upload = 67108864;
+
 $sys_cookie_prefix = 'TLP';
 $sys_lang = 'en_US';
 $sys_supported_languages = 'en_US';
