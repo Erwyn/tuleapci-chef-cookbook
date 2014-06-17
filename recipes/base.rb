@@ -1,3 +1,4 @@
+include_recipe 'yum-repoforge'
 include_recipe 'tuleapci::jenkins'
 
 # Configure Tuleap repo
